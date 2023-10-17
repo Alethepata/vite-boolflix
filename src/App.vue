@@ -5,13 +5,15 @@ import axios from 'axios';
 
 import Header from './components/Header.vue';
 import CardsContainer from './components/CardsContainer.vue';
+import Jumbotron from './components/Jumbotron.vue';
 
 
 export default {
   name: 'App',
   components: {
     Header,
-    CardsContainer
+    CardsContainer,
+    Jumbotron
     
   },
   data() {
@@ -36,7 +38,20 @@ export default {
     types() {
       this.getApi('movie'),
       this.getApi('tv')
+    },
+    getPopular() {
+      axios.get(store.popularUrl, {
+        params: {
+          api_key: 'b01a5b39baec6aab0a375381ad7bd179',
+        }
+      })
+        .then(res => {
+        store.popular = res.data.results
+      })
     }
+  },
+  mounted() {
+    this.getPopular()
   }
 
 }
@@ -44,6 +59,7 @@ export default {
 
 <template>
   <Header @startSearch="types"/>
+  <Jumbotron v-if="store.movie.length == 0 || store.tv.length == 0 "/>
   <CardsContainer
   v-if="store.movie.length > 0"
   titleType="Film" 

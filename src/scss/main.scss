@@ -1,1 +1,8 @@
-@import 'bootstrap/scss/bootstrap'
+@import 'bootstrap/scss/bootstrap';
+
+body{
+    background-color: rgb(26, 24, 24);
+    height: 100vh;
+    overflow-y: auto;
+}
+ 

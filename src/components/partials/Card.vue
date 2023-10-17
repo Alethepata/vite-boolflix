@@ -6,6 +6,11 @@ export default {
         title:String,
         original_language:String,
         vote_average:String,
+    },
+    methods: {
+        getFlag(img) {
+            return new URL (`../../assets/flag/${img}.png`, import.meta.url).href
+        }
     }
 
 }
@@ -15,11 +20,15 @@ export default {
 <div class="card w-25 text-center">
     <h1>{{ title }}</h1>
     <h3>{{ original_title }}</h3>
-    <p>{{ original_language }}</p>
+    <img :src="getFlag(original_language)" :alt="original_language">
     <p>{{ vote_average }}</p>
 </div>
 </template>
 
-<style>
+<style lang="scss">
+
+img{
+    width: 50px;
+}
 
 </style>

@@ -13,7 +13,7 @@ export default {
 
 <template>
     <header>
-        <div class="container text-end my-5 d-flex justify-content-between ">
+        <div class="container text-end pt-5 d-flex justify-content-between ">
             <div class="logo">
                 <img src="../../public/logo/logo-boolflix.png" alt="">
             </div>
@@ -39,9 +39,12 @@ export default {
 
 <style lang="scss">
 
-.logo{
-    img{
-        width: 150px;
+header{
+    height: 100px;
+    .logo{
+        img{
+            width: 150px;
+        }
     }
 }
 

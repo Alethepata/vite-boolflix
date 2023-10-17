@@ -17,7 +17,7 @@ export default {
         getUrlImg(img) {
              return `https://image.tmdb.org/t/p/w1280${img}`
   
-        },          
+        }       
 
     }
 
@@ -30,8 +30,9 @@ export default {
             <h1>{{ title || name }}</h1>
             <h3>{{ original_title || original_name }}</h3>
             <img class="flag" :src="getFlag(original_language)" :alt="original_language">
-            <p>{{ vote_average }}</p>
-            <img :src="getUrlImg(backdrop_path)" alt="">
+            <p v-if="vote_average.toFixed(0) < 5">{{ vote_average.toFixed(0) }}</p>
+            <p v-else>5</p>
+            <img :src="getUrlImg(backdrop_path)" :alt="title || name">
         </div>
     </div>
 </template>

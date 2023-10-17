@@ -7,32 +7,41 @@ export default {
         original_name:String,
         name:String,
         original_language:String,
-        vote_average: String
+        vote_average: String,
+        backdrop_path:String
     },
     methods: {
         getFlag(img) {
             return new URL (`../../assets/flag/${img}.png`, import.meta.url).href
-        }
+        },
+        getUrlImg(img) {
+             return `https://image.tmdb.org/t/p/w1280${img}`
+  
+        },          
+
     }
 
 }
 </script>
 
 <template>
-    <div class="col">
-        <div class="card text-center h-100">
+    <div class="col my-3">
+        <div class="card text-center h-100 ">
             <h1>{{ title || name }}</h1>
             <h3>{{ original_title || original_name }}</h3>
-            <img :src="getFlag(original_language)" :alt="original_language">
+            <img class="flag" :src="getFlag(original_language)" :alt="original_language">
             <p>{{ vote_average }}</p>
+            <img :src="getUrlImg(backdrop_path)" alt="">
         </div>
     </div>
 </template>
 
 <style lang="scss">
 
-img{
+.flag{
     width: 50px;
 }
+
+
 
 </style>

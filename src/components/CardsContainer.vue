@@ -34,6 +34,7 @@ export default {
         :name="item.name"
         :original_language="item.original_language"
         :vote_average="item.vote_average"
+        :backdrop_path="item.backdrop_path"
         />            
         </div>
 

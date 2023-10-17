@@ -20,27 +20,40 @@ export default {
     }
   },
   methods: {
-    getApi() {
-      axios.get(store.apiUrl, {
+    getApi(type) {
+      axios.get(store.apiUrl+ type, {
         params: {
+          api_key: 'b01a5b39baec6aab0a375381ad7bd179',
           query:store.movieToSearch
         }
       })
         .then(res => {
-        store.moviesList = res.data.results
+          if (type == 'movie') store.movie = res.data.results
+          else store.tv = res.data.results
+
       })
+    },
+    types() {
+      this.getApi('movie'),
+      this.getApi('tv')
     }
-  },
-  mounted() {
-    this.getApi()
   }
 
 }
 </script>
 
 <template>
-  <SearchBar @startSearch="getApi"/>
-  <CardsContainer/>
+  <SearchBar @startSearch="types"/>
+  <CardsContainer
+  v-if="store.movie.length > 0"
+  titleType="Film" 
+  type="movie"
+  />
+  <CardsContainer 
+  v-if="store.tv.length > 0"
+  titleType="Serie tv" 
+  type="tv"
+  />
 </template>
 
 <style lang="scss">

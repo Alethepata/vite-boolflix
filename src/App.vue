@@ -3,14 +3,14 @@
 import { store } from './data/store';
 import axios from 'axios';
 
-import SearchBar from './components/SearchBar.vue';
+import Header from './components/Header.vue';
 import CardsContainer from './components/CardsContainer.vue';
+
 
 export default {
   name: 'App',
   components: {
-
-    SearchBar,
+    Header,
     CardsContainer
     
   },
@@ -43,7 +43,7 @@ export default {
 </script>
 
 <template>
-  <SearchBar @startSearch="types"/>
+  <Header @startSearch="types"/>
   <CardsContainer
   v-if="store.movie.length > 0"
   titleType="Film" 

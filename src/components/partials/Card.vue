@@ -4,8 +4,10 @@ export default {
     props: {
         original_title:String,
         title:String,
+        original_name:String,
+        name:String,
         original_language:String,
-        vote_average:String,
+        vote_average: String
     },
     methods: {
         getFlag(img) {
@@ -17,12 +19,14 @@ export default {
 </script>
 
 <template>
-<div class="card w-25 text-center">
-    <h1>{{ title }}</h1>
-    <h3>{{ original_title }}</h3>
-    <img :src="getFlag(original_language)" :alt="original_language">
-    <p>{{ vote_average }}</p>
-</div>
+    <div class="col">
+        <div class="card text-center h-100">
+            <h1>{{ title || name }}</h1>
+            <h3>{{ original_title || original_name }}</h3>
+            <img :src="getFlag(original_language)" :alt="original_language">
+            <p>{{ vote_average }}</p>
+        </div>
+    </div>
 </template>
 
 <style lang="scss">

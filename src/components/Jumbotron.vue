@@ -29,7 +29,7 @@ export default {
 
 <template>
 
-    <div class="container size_container pt-3">
+    <div class="container size_container">
         <div class="slider position-relative d-flex ">
             <div v-for="(item,index) in store.popular" :key="index" class="items-wrapper position-relative ">
                 <img class="w-100" v-if="store.counter==index" :src="getUrlImg(item.backdrop_path)">
@@ -63,6 +63,7 @@ export default {
 .size_container{
     height: calc(100% - 100px);
     width: 40%;
+    padding-top: 180px ;
 }
 h5{
     position: absolute;

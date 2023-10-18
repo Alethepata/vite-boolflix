@@ -22,7 +22,7 @@ export default {
 
 <template>
 
-    <div class="container">
+    <div class="container size">
         <h1>{{ titleType }}</h1>
         <div class="row row-cols-4">
         <Card
@@ -43,7 +43,9 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-
+.size{
+    padding-top: 100px;
+}
 h1{
     color: white;
 }

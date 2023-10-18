@@ -74,10 +74,7 @@ export default {
     .card{    
         height: 100%;
         position: relative;
-    
-        &:hover{
-            border-color: black;
-        }
+        border-color: black;
 
         &:hover .card-text{
             display: block;

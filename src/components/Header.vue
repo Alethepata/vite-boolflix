@@ -15,7 +15,7 @@ export default {
     <header>
         <div class="container text-end pt-5 d-flex justify-content-between ">
             <div class="logo">
-                <img src="../../public/logo/logo-boolflix.png" alt="">
+                <img src="/logo/logo-boolflix.png" alt="">
             </div>
             <div class="search ">
                     <input 

@@ -6,6 +6,8 @@ import axios from 'axios';
 import Header from './components/Header.vue';
 import CardsContainer from './components/CardsContainer.vue';
 import Jumbotron from './components/Jumbotron.vue';
+import Main from './components/Main.vue';
+
 
 
 export default {
@@ -13,7 +15,8 @@ export default {
   components: {
     Header,
     CardsContainer,
-    Jumbotron
+    Jumbotron,
+    Main
     
   },
   data() {
@@ -53,10 +56,25 @@ export default {
           store.popular = res.data.results
 
       })
+    },
+    getHome(type) {
+      axios.get(store.apiUrl + `trending/${type}/day`, {
+        params: {
+          api_key: 'b01a5b39baec6aab0a375381ad7bd179',
+        }
+      })
+        .then(res => {
+          if (type == 'movie') store.movieHome = res.data.results
+          else store.tvHome = res.data.results
+          
+
+      })
     }
   },
   mounted() {
-    this.getPopular()
+    this.getPopular(),
+    this.getHome('movie')
+    this.getHome('tv')
   }
 
 }
@@ -75,6 +93,7 @@ export default {
   titleType="Serie tv" 
   type="tv"
   />
+  <Main/>
 </template>
 
 <style lang="scss">

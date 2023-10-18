@@ -26,7 +26,8 @@ export default {
       axios.get(store.apiUrl+ type, {
         params: {
           api_key: 'b01a5b39baec6aab0a375381ad7bd179',
-          query:store.movieToSearch
+          query: store.movieToSearch,
+          language: 'it-IT'
         }
       })
         .then(res => {
@@ -38,6 +39,7 @@ export default {
     types() {
       this.getApi('search/movie'),
       this.getApi('search/tv')
+      store.visible = false
     },
     getPopular() {
       axios.get(store.apiUrl + 'movie/popular', {
@@ -48,7 +50,8 @@ export default {
         }
       })
         .then(res => {
-        store.popular = res.data.results
+          store.popular = res.data.results
+
       })
     }
   },
@@ -61,7 +64,7 @@ export default {
 
 <template>
   <Header @startSearch="types"/>
-  <Jumbotron v-if="store.movie.length == 0 || store.tv.length == 0 "/>
+  <Jumbotron v-if="store.visible == true || store.visible == true "/>
   <CardsContainer
   v-if="store.movie.length > 0"
   titleType="Film" 

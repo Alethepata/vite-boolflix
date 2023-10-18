@@ -30,7 +30,7 @@ export default {
             </div>
         </div>
         <div class="custom_container">        
-            <h1 class=" text-light">Film</h1>
+            <h1 class=" text-light">Serie tv</h1>
             <div class="d-flex">
                 <div v-for="item in store.tvHome" :key="item.id" class="image">
                     <img class="object-fit-cover" :src="getUrlImg(item.poster_path)">

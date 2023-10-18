@@ -4,7 +4,9 @@ export const store = reactive({
     apiUrl: 'https://api.themoviedb.org/3/',
     movie: [],
     tv: [],
-    popular:[],
+    popular: [],
+    movieHome:[],
+    tvHome:[],
     movieToSearch: '',
     counter: 0,
     visible:true

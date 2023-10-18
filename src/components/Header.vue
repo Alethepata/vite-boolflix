@@ -40,7 +40,11 @@ export default {
 <style lang="scss">
 
 header{
+    position: fixed;
+    width: 100%;
     height: 100px;
+    z-index: 1000;
+    background-color: black ;
     .logo{
         img{
             width: 150px;

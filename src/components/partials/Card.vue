@@ -8,7 +8,8 @@ export default {
         name:String,
         original_language:String,
         vote_average: String,
-        poster_path:String
+        poster_path: String,
+        overview: String
     },
     methods: {
         getFlag(img) {
@@ -34,23 +35,29 @@ export default {
 
         <div class="card">        
             <div class="card-img w-100 h-100">            
-                <img class="w-100 h-100 object-fit-cover" :src="getUrlImg(poster_path)" :alt="title || name">
+                <img v-if="poster_path" class="w-100 h-100 object-fit-cover" :src="getUrlImg(poster_path)" :alt="title || name">
+                <img v-else class="w-100 h-100 object-fit-cover" src="https://www.wpoven.com/blog/wp-content/uploads/2022/09/error-404.png" :alt="title || name">
             </div>
-            <div class="card-text text-center text-light p-3">
-                <h3>{{ title || name }}</h3>
-                <h5 class="my-5">{{ original_title || original_name }}</h5>
+            <div class="card-text text-light">
+                <h3 class="text-center">{{ title || name }}</h3>
+                <h5 class="text-center my-2">{{ original_title || original_name }}</h5>
 
-                <img class="flag mt-4" :src="getFlag(original_language)" :alt="original_language">
+                <img class="flag" :src="getFlag(original_language)" :alt="original_language">
 
-                <div class="stars">
+
+                <div class="stars my-2">
                     <i 
                     v-for="i in 5" 
                     :key="i" 
                     class="fa-star" 
-                    :class="[{'fa-solid' : i < getVote}, {'fa-regular' : i = getVote} ]">
+                    :class="[{'fa-solid' : i <= getVote}, {'fa-regular' : i > getVote}]">
                      </i>
                 </div>
                 
+                <div class="description">
+                    <p>{{ overview }}</p>
+                </div>
+
 
 
             </div>
@@ -65,9 +72,12 @@ export default {
 .col{
 
     .card{    
-        height: 500px;
+        height: 100%;
         position: relative;
-        overflow-y: auto;
+    
+        &:hover{
+            border-color: black;
+        }
 
         &:hover .card-text{
             display: block;
@@ -78,9 +88,9 @@ export default {
         .card-text{
             display: none;
             position: absolute;
-            left:50%;
-            transform: translate(-50%);
-            
+            height:100% ;
+            padding: 20px;
+            overflow-y: auto;
         }
         .flag{
         width: 50px;

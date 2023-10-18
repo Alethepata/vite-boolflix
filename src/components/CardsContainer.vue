@@ -41,6 +41,10 @@ export default {
     </div>
 </template>
 
-<style>
+<style lang="scss" scoped>
+
+h1{
+    color: white;
+}
 
 </style>

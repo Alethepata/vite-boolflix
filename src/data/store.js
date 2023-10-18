@@ -6,5 +6,6 @@ export const store = reactive({
     tv: [],
     popular:[],
     movieToSearch: '',
-    counter:0
+    counter: 0,
+    visible:true
 })

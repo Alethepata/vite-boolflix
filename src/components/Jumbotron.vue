@@ -13,6 +13,15 @@ export default {
              return `https://image.tmdb.org/t/p/w1280${img}`
   
         }       
+    },
+    mounted() {
+        const time= setInterval(() => {
+            store.counter++
+            if (store.counter == store.popular.length - 1) {
+                clearInterval(time)
+            }
+            
+        },3000)
     }
 
 }

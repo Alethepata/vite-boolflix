@@ -17,8 +17,13 @@ export default {
         getUrlImg(img) {
              return `https://image.tmdb.org/t/p/w342${img}`
   
-        }       
-
+        }
+    
+    },
+    computed: {
+        getVote() {
+            return Math.ceil(this.vote_average / 2)
+        }  
     }
 
 }
@@ -34,13 +39,25 @@ export default {
             <div class="card-text text-center text-light p-3">
                 <h3>{{ title || name }}</h3>
                 <h5 class="my-5">{{ original_title || original_name }}</h5>
+
                 <img class="flag mt-4" :src="getFlag(original_language)" :alt="original_language">
-                <p v-if="vote_average.toFixed(0) < 5">{{ vote_average.toFixed(0) }}</p>
-                <p v-else>5</p>
+
+                <div class="stars">
+                    <i 
+                    v-for="i in 5" 
+                    :key="i" 
+                    class="fa-star" 
+                    :class="[{'fa-solid' : i < getVote}, {'fa-regular' : i = getVote} ]">
+                     </i>
+                </div>
+                
+
+
             </div>
 
         </div>
-    </div>
+    </div>                
+
 </template>
 
 <style lang="scss">
@@ -50,6 +67,7 @@ export default {
     .card{    
         height: 500px;
         position: relative;
+        overflow-y: auto;
 
         &:hover .card-text{
             display: block;
@@ -61,7 +79,8 @@ export default {
             display: none;
             position: absolute;
             left:50%;
-            transform: translate(-50%)
+            transform: translate(-50%);
+            
         }
         .flag{
         width: 50px;

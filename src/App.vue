@@ -30,19 +30,21 @@ export default {
         }
       })
         .then(res => {
-          if (type == 'movie') store.movie = res.data.results
+          if (type == 'search/movie') store.movie = res.data.results
           else store.tv = res.data.results
 
       })
     },
     types() {
-      this.getApi('movie'),
-      this.getApi('tv')
+      this.getApi('search/movie'),
+      this.getApi('search/tv')
     },
     getPopular() {
-      axios.get(store.popularUrl, {
+      axios.get(store.apiUrl + 'movie/popular', {
         params: {
           api_key: 'b01a5b39baec6aab0a375381ad7bd179',
+          language: 'en-US',
+          page:1
         }
       })
         .then(res => {

@@ -82,7 +82,7 @@ export default {
 
 <template>
   <Header @startSearch="types"/>
-  <Jumbotron v-if="store.visible == true || store.visible == true "/>
+  <Jumbotron v-if="store.visible == true"/>
   <CardsContainer
   v-if="store.movie.length > 0"
   titleType="Film" 
@@ -93,7 +93,7 @@ export default {
   titleType="Serie tv" 
   type="tv"
   />
-  <Main/>
+  <Main v-if="store.visible == true"/>
 </template>
 
 <style lang="scss">
